@@ -100,19 +100,39 @@ const UploadPage = () => {
                         <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-2 text-center">Upload File</h2>
                         <p className="text-slate-500 dark:text-slate-400 text-center mb-8">Supports Scanned PDFs, Images (JPG, PNG)</p>
 
+
                         {!file ? (
-                            <div
-                                className={`border-3 border-dashed rounded-2xl p-12 flex flex-col items-center justify-center cursor-pointer transition-colors ${dragging ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' : 'border-slate-200 dark:border-slate-600 hover:border-blue-400 dark:hover:border-blue-500 hover:bg-slate-50 dark:hover:bg-slate-700/50'}`}
-                                onDragEnter={handleDragEnter}
-                                onDragOver={handleDragOver}
-                                onDragLeave={handleDragLeave}
-                                onDrop={handleDrop}
-                                onClick={() => fileInputRef.current.click()}
-                            >
-                                <FaCloudUploadAlt className="text-6xl text-slate-300 dark:text-slate-500 mb-4" />
-                                <p className="font-semibold text-slate-600 dark:text-slate-300">Click to upload or drag & drop</p>
-                                <p className="text-sm text-slate-400 dark:text-slate-500 mt-2">Max file size 10MB</p>
-                                <input type="file" ref={fileInputRef} onChange={handleFileSelect} className="hidden" accept="image/*,application/pdf" />
+                            <div className="space-y-4">
+                                <div
+                                    className={`border-3 border-dashed rounded-2xl p-12 flex flex-col items-center justify-center cursor-pointer transition-colors ${dragging ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' : 'border-slate-200 dark:border-slate-600 hover:border-blue-400 dark:hover:border-blue-500 hover:bg-slate-50 dark:hover:bg-slate-700/50'}`}
+                                    onDragEnter={handleDragEnter}
+                                    onDragOver={handleDragOver}
+                                    onDragLeave={handleDragLeave}
+                                    onDrop={handleDrop}
+                                    onClick={() => fileInputRef.current.click()}
+                                >
+                                    <FaCloudUploadAlt className="text-6xl text-slate-300 dark:text-slate-500 mb-4" />
+                                    <p className="font-semibold text-slate-600 dark:text-slate-300">Click to upload or drag & drop</p>
+                                    <p className="text-sm text-slate-400 dark:text-slate-500 mt-2">Max file size 10MB</p>
+                                    <input type="file" ref={fileInputRef} onChange={handleFileSelect} className="hidden" accept="image/*,application/pdf" />
+                                </div>
+                                <div className="text-center">
+                                    <button
+                                        onClick={async () => {
+                                            try {
+                                                const response = await fetch('/scanned_paper_demo.png');
+                                                const blob = await response.blob();
+                                                const sampleFile = new File([blob], "sample_math_paper.png", { type: "image/png" });
+                                                setFile(sampleFile);
+                                            } catch (err) {
+                                                console.error("Failed to load sample", err);
+                                            }
+                                        }}
+                                        className="text-sm text-blue-600 dark:text-blue-400 font-medium hover:underline flex items-center justify-center gap-1 mx-auto"
+                                    >
+                                        <FaMagic className="text-xs" /> Try a sample math paper
+                                    </button>
+                                </div>
                             </div>
                         ) : (
                             <div className="bg-slate-50 dark:bg-slate-700/50 rounded-2xl p-6 flex items-center justify-between border border-slate-200 dark:border-slate-600">

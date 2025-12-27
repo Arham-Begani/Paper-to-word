@@ -44,9 +44,9 @@ const ResultPage = () => {
             </Link>
 
             <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-slate-100 dark:border-slate-700">
-                <div className="bg-slate-900 dark:bg-black p-8 text-white md:flex justify-between items-center">
-                    <div className="mb-6 md:mb-0">
-                        <h1 className="text-3xl font-bold flex items-center gap-3 mb-2">
+                <div className="bg-slate-900 dark:bg-black p-6 md:p-8 text-white flex flex-col items-center md:flex-row md:justify-between text-center md:text-left gap-6 md:gap-0">
+                    <div className="mb-0 md:mb-0">
+                        <h1 className="text-2xl md:text-3xl font-bold flex items-center justify-center md:justify-start gap-3 mb-2">
                             <FaCheckCircle className="text-green-400" /> Success!
                         </h1>
                         <p className="text-slate-400">
@@ -54,11 +54,11 @@ const ResultPage = () => {
                         </p>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-4">
+                    <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
                         <button
                             onClick={() => handleDownload('docx')}
                             disabled={downloading}
-                            className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold transition shadow-lg shadow-blue-900/20 disabled:opacity-50"
+                            className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3.5 rounded-xl font-bold transition shadow-lg shadow-blue-900/20 disabled:opacity-50 w-full sm:w-auto"
                         >
                             {downloading ? <FaSpinner className="animate-spin" /> : <FaFileWord />}
                             Download Word
@@ -66,7 +66,7 @@ const ResultPage = () => {
                         <button
                             onClick={() => handleDownload('pdf')}
                             disabled={downloading}
-                            className="flex items-center justify-center gap-2 bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-xl font-bold transition disabled:opacity-50 border border-slate-600"
+                            className="flex items-center justify-center gap-2 bg-slate-700 hover:bg-slate-600 text-white px-6 py-3.5 rounded-xl font-bold transition disabled:opacity-50 border border-slate-600 w-full sm:w-auto"
                         >
                             {downloading ? <FaSpinner className="animate-spin" /> : <FaFilePdf />}
                             Download PDF

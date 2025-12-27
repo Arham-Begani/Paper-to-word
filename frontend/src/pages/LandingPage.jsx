@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaBookOpen, FaMagic, FaDownload, FaRocket } from 'react-icons/fa';
+import DemoModal from '../components/DemoModal';
 
 const LandingPage = () => {
     const navigate = useNavigate();
+    const [isDemoOpen, setIsDemoOpen] = useState(false);
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -17,6 +20,8 @@ const LandingPage = () => {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] text-slate-800 dark:text-slate-100 overflow-hidden relative">
+
+            <DemoModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
 
             {/* Background Gradients */}
             <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-400/30 rounded-full blur-[100px] -z-10 animate-pulse-slow"></div>
@@ -54,7 +59,10 @@ const LandingPage = () => {
                     >
                         <FaRocket /> Start Converting Free
                     </button>
-                    <button className="px-8 py-4 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-xl text-lg font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition w-full md:w-auto">
+                    <button
+                        onClick={() => setIsDemoOpen(true)}
+                        className="px-8 py-4 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-xl text-lg font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition w-full md:w-auto"
+                    >
                         View Demo
                     </button>
                 </motion.div>
