@@ -36,7 +36,7 @@ const LandingPage = () => {
                 </motion.div>
 
                 <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight">
-                    Stop Typesetting.<br />
+                    Stop Typing.<br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
                         Start Converting.
                     </span>
