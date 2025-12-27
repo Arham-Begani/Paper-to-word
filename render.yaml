@@ -8,24 +8,24 @@ services:
     buildCommand: npm install
     startCommand: node server.js
     envVars:
+      # 1. Explicitly tell Render to use Node 18 (Fixes many build errors)
       - key: NODE_VERSION
         value: 18
+      # 2. Define the port (Must match your code)
       - key: PORT
         value: 10000
+      # 3. API Key (Do not remove sync: false)
       - key: GEMINI_API_KEY
         sync: false
 
-  # --- Frontend ---
+  # --- Frontend (Keep this from the previous fix) ---
   - type: web
     name: paper-to-word-frontend
     env: node
     plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build
-    # Uses 'serve' to host the static build folder
     startCommand: npx serve -s dist -l 10000
     envVars:
-      # FIXED: We hardcode the URL because Render's automatic linking
-      # does not provide the "https://" protocol needed for the browser.
       - key: VITE_API_BASE_URL
         value: https://paper-to-word-backend.onrender.com/api
