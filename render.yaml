@@ -1,5 +1,5 @@
 services:
-  # Backend Web Service
+  # --- Backend (No changes needed here) ---
   - type: web
     name: paper-to-word-backend
     env: node
@@ -8,27 +8,26 @@ services:
     buildCommand: npm install
     startCommand: node server.js
     envVars:
-      # Explicitly set Node version to prevent compatibility issues
       - key: NODE_VERSION
         value: 18
-      # Render automatically sets PORT, but hardcoding 10000 is fine for free tier
       - key: PORT
         value: 10000
       - key: GEMINI_API_KEY
-        sync: false 
+        sync: false
 
-  # Frontend Static Site
-  - type: static
+  # --- Frontend (Fixed: Changed type to web) ---
+  - type: web
     name: paper-to-word-frontend
+    env: node
     plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build
-    publishDir: dist
+    # We use 'serve' to host the static 'dist' folder like a website
+    startCommand: npx serve -s dist -l 10000
     envVars:
-      # FIXED: Changed 'host' to 'url' to ensure https:// is included
       - key: VITE_API_BASE_URL
         fromService:
           type: web
           name: paper-to-word-backend
-          property: url 
+          property: url
         suffix: /api
