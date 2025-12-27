@@ -1,0 +1,30 @@
+services:
+  # Backend Web Service
+  - type: web
+    name: paper-to-word-backend
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: GEMINI_API_KEY
+        sync: false # User will provide this in Render dashboard
+
+  # Frontend Static Site
+  - type: static
+    name: paper-to-word-frontend
+    env: static
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    publishDir: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        fromService:
+          type: web
+          name: paper-to-word-backend
+          property: host
+        suffix: /api
