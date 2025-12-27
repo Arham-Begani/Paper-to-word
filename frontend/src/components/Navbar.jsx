@@ -8,7 +8,7 @@ const Navbar = () => {
     return (
         <nav className="flex justify-between items-center px-6 md:px-12 py-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100 dark:border-slate-800 transition-colors duration-300">
             <Link to="/" className="flex items-center gap-2 text-2xl font-bold text-blue-600 tracking-tight">
-                <FaBookOpen />
+                <img src="/logo.png" alt="Logo" className="w-8 h-8 rounded-lg" />
                 <span>Paper2Word</span>
             </Link>
             <div className="flex items-center gap-6 font-medium text-gray-600 dark:text-gray-300">
