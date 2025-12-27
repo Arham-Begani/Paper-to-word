@@ -14,9 +14,8 @@ services:
         sync: false # User will provide this in Render dashboard
 
   # Frontend Static Site
-  - type: static
+  - type: static_site
     name: paper-to-word-frontend
-    env: static
     plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build

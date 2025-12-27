@@ -55,6 +55,6 @@ A production-ready web application that converts scanned documents, PDFs, and im
 ## usage
 1. Go to the Home page.
 2. Click "Get Started".
-3. Upload an Image or PDF.
+3. Upload an Image or PDF of your text book or question paper.
 4. Wait for AI processing.
 5. Preview the result and Download as Word or PDF.
