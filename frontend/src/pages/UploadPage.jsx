@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaCloudUploadAlt, FaFilePdf, FaImage, FaSpinner, FaTimes } from 'react-icons/fa';
+import { FaCloudUploadAlt, FaFilePdf, FaImage, FaSpinner, FaTimes, FaMagic } from 'react-icons/fa';
 import api from '../api/axios';
 
 const UploadPage = () => {

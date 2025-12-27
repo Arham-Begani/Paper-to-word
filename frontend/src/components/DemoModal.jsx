@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaTimes, FaMagic, FaArrowRight, FaSparkles } from 'react-icons/fa';
+import { FaTimes, FaMagic, FaArrowRight } from 'react-icons/fa';
+import { HiSparkles } from 'react-icons/hi';
 import { useNavigate } from 'react-router-dom';
 
 const DemoModal = ({ isOpen, onClose }) => {
@@ -74,7 +75,7 @@ const DemoModal = ({ isOpen, onClose }) => {
                                         alt="After"
                                         className="absolute inset-0 w-full h-full object-cover"
                                     />
-                                    
+
                                     {/* Labels */}
                                     <div className="absolute top-2 md:top-4 right-2 md:right-4 z-20 px-2 md:px-4 py-1 md:py-2 bg-green-500 text-white text-[10px] md:text-xs font-bold rounded-full shadow-lg">
                                         AFTER: WORD
@@ -116,7 +117,7 @@ const DemoModal = ({ isOpen, onClose }) => {
                                 ].map((f, i) => (
                                     <div key={i} className="p-3 md:p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl md:rounded-2xl border border-slate-100 dark:border-slate-800">
                                         <h4 className="font-bold text-sm md:text-base text-slate-800 dark:text-white mb-0.5 md:mb-1 flex items-center gap-2">
-                                            <FaSparkles className="text-blue-500 text-[10px] md:text-xs" /> {f.title}
+                                            <HiSparkles className="text-blue-500 text-[10px] md:text-xs" /> {f.title}
                                         </h4>
                                         <p className="text-[11px] md:text-sm text-slate-500 dark:text-slate-400 leading-snug">{f.desc}</p>
                                     </div>
