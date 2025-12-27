@@ -1,6 +1,6 @@
 import { useLocation, Link } from 'react-router-dom';
 import { FaFileWord, FaFilePdf, FaArrowLeft, FaCheckCircle, FaSpinner } from 'react-icons/fa';
-import axios from 'axios';
+import api from '../api/axios';
 import { useState } from 'react';
 
 const ResultPage = () => {
@@ -18,7 +18,7 @@ const ResultPage = () => {
     const handleDownload = async (format) => {
         setDownloading(true);
         try {
-            const response = await axios.post('/api/download', {
+            const response = await api.post('/download', {
                 markdown: data.markdownContent,
                 format
             }, { responseType: 'blob' });

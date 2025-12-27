@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCloudUploadAlt, FaFilePdf, FaImage, FaSpinner, FaTimes } from 'react-icons/fa';
-import axios from 'axios';
+import api from '../api/axios';
 
 const UploadPage = () => {
     const [file, setFile] = useState(null);
@@ -41,7 +41,7 @@ const UploadPage = () => {
             formData.append('file', file);
 
             // 1. Upload
-            const uploadRes = await axios.post('/api/upload', formData, {
+            const uploadRes = await api.post('/upload', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
 
@@ -52,7 +52,7 @@ const UploadPage = () => {
                 ? 'Gemini AI is analyzing and solving questions... (This might take longer)'
                 : 'Gemini AI is reading and formatting... (This might take 30-60s)');
 
-            const processRes = await axios.post('/api/process', {
+            const processRes = await api.post('/process', {
                 fileId: uploadRes.data.fileId,
                 solveQuestions
             });
