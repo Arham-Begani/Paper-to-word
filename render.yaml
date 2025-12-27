@@ -14,7 +14,7 @@ services:
         sync: false # User will provide this in Render dashboard
 
   # Frontend Static Site
-  - type: web
+  - type: static
     name: paper-to-word-frontend
     plan: free
     rootDir: frontend
